@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Result</title>
+    <meta charset="UTF-8">
+    <title>Result Page</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            padding-top: 150px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+    </style>
 </head>
 
-<body style="text-align:center; font-family:Arial; background:black; color:white; padding-top:150px;">
+<body>
 
-<h1 id="output"></h1>
-
-<input id="nameInput" placeholder="Enter name">
-<button onclick="showMessage()">Submit</button>
-
-<h1 id="output"></h1>
+<h1 id="output">Loading...</h1>
 
 <script>
-function showMessage(){
-    let name = document.getElementById("nameInput").value;
+function getNameFromURL() {
+    let params = new URLSearchParams(window.location.search);
+    let name = params.get("name");
 
-    document.getElementById("output").innerText =
-    "GOOD NIGHT FROM " + name.toUpperCase();
+    if (!name || name.trim() === "") {
+        return "FRIEND";
+    }
+
+    return name;
 }
+
+let name = getNameFromURL();
+
+document.getElementById("output").innerText =
+"GOOD NIGHT FROM " + name.toUpperCase();
 </script>
 
 </body>
