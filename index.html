@@ -8,12 +8,18 @@
 
 <h1 id="output"></h1>
 
-<script>
-let params = new URLSearchParams(window.location.search);
-let name = params.get("name");
+<input id="nameInput" placeholder="Enter name">
+<button onclick="showMessage()">Submit</button>
 
-document.getElementById("output").innerText =
-"GOOD NIGHT FROM " + name.toUpperCase();
+<h1 id="output"></h1>
+
+<script>
+function showMessage(){
+    let name = document.getElementById("nameInput").value;
+
+    document.getElementById("output").innerText =
+    "GOOD NIGHT FROM " + name.toUpperCase();
+}
 </script>
 
 </body>
