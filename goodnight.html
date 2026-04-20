@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Good Night Generator</title>
+</head>
+<body style="background-color:black; color:white; text-align:center; font-family:Arial;">
+
+    <h1>Good Night Generator 🌙</h1>
+
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <br><br>
+
+    <button onclick="generateText()">Generate</button>
+
+    <h2 id="output"></h2>
+
+    <script>
+        function generateText() {
+            var name = document.getElementById("nameInput").value;
+            var text = "GOOD NIGHT FROM " + name.toUpperCase();
+            document.getElementById("output").innerHTML = text;
+        }
+    </script>
+
+</body>
+</html>
