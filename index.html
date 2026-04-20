@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Result Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Night Generator</title>
 
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: black;
-            color: white;
-            padding-top: 150px;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-        h1 {
-            font-size: 40px;
-        }
-    </style>
+    .container {
+        background: rgba(0,0,0,0.5);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        width: 90%;
+        max-width: 400px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #00c6ff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .output {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #00c6ff; }
+        to { text-shadow: 0 0 20px #00c6ff; }
+    }
+</style>
 </head>
 
 <body>
 
-<h1 id="output">Loading...</h1>
+<div class="container">
+    <h1>🌙 Good Night Generator</h1>
+
+    <input type="text" id="nameInput" placeholder="Enter name (e.g MUSAVADHA)">
+
+    <button onclick="generateText()">Generate</button>
+    <button onclick="copyText()">Copy Text</button>
+
+    <div class="output" id="output"></div>
+</div>
 
 <script>
-window.onload = function () {
-    let params = new URLSearchParams(window.location.search);
-    let name = params.get("name");
+function generateText() {
+    let name = document.getElementById("nameInput").value.toUpperCase();
+    let text = "GOOD NIGHT FROM " + name;
+    document.getElementById("output").innerHTML = text;
+}
 
-    if (!name || name.trim() === "") {
-        name = "FRIEND";
-    }
-
-    document.getElementById("output").innerText =
-        "GOOD NIGHT FROM " + name.toUpperCase();
-};
+function copyText() {
+    let text = document.getElementById("output").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
 </script>
 
 </body>
